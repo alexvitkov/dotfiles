@@ -1,0 +1,55 @@
+hi clear 
+if exists("syntax_on")
+  syntax reset
+endif
+
+let colors_name = "good"
+
+hi clear Constant
+hi clear TODO
+hi clear Identifier
+hi clear Type
+hi clear Statement
+hi clear String
+hi clear SignColumn
+hi clear Special
+hi clear Comment
+hi clear LineNr
+hi clear CursorLineNr
+hi clear PreProc
+hi clear cIncluded
+hi clear MatchParen
+hi clear Error
+hi clear Title
+
+hi! Comment cterm=italic ctermfg=8 ctermbg=NONE
+hi! TODO cterm=italic,bold ctermfg=8 ctermbg=NONE
+
+hi! LineNr ctermfg=8
+hi! CursorLineNr ctermfg=8 cterm=bold
+
+hi! String ctermbg=NONE cterm=bold ctermfg=15
+hi! cFormat ctermbg=NONE cterm=bold ctermfg=15
+hi cSpecial ctermbg=NONE cterm=bold ctermfg=15
+
+hi! CorErrorSign ctermfg=red cterm=bold
+hi! CocErrorHighlight ctermfg=red cterm=underline
+hi! CocFloat ctermfg=NONE ctermbg=red
+hi! CocErrorFloat ctermfg=NONE ctermbg=red
+hi! CocWarningFloat ctermfg=NONE ctermbg=red
+hi! ColorColumn ctermbg=8
+
+
+hi! CocWarningSign ctermfg=yellow cterm=bold
+hi! CocWarningHighlight ctermfg=yellow cterm=underline
+
+hi cIncluded ctermfg=NONE ctermbg=NONE
+hi MatchParen cterm=underline ctermbg=8
+
+hi Visual ctermbg=8
+
+hi Pmenu ctermbg=15 ctermfg=0
+hi EndOfBuffer ctermfg=15
+
+hi ErrorMsg cterm=bold,underline ctermfg=red ctermbg=NONE
+hi Error ctermfg=red cterm=underline

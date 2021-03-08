@@ -1,0 +1,61 @@
+alt + Escape
+	pkill -USR1 -x sxhkd
+
+alt + shift + Return
+	st
+
+alt + shift + e
+	emoji
+
+alt + r
+	dmenu_run
+
+alt + e
+	pcmanfm
+
+alt + b
+	browser
+
+alt + m
+	st -e neomutt
+
+alt + o
+	kbd; \
+	bar once
+
+alt + p
+	passmenu
+
+alt + s
+	screenshot -us
+
+alt + shift + s
+	screenshot
+
+alt + t
+	notify-send "Status" "$(bar status)"
+
+alt + w
+	wallpaper menu
+
+alt + shift + w
+	wallpaper
+
+alt + shift + l
+	lock
+
+XF86MonBrightnessUp
+	xbacklight -inc 10 -steps 1 ;\
+	bar once
+
+XF86MonBrightnessDown
+	xbacklight -dec 10 -steps 1 ;\
+	bar once
+
+XF86AudioRaiseVolume
+	pactl set-sink-volume 0 +5% ;\
+	bar once
+
+XF86AudioLowerVolume
+	pactl set-sink-volume 0 -5% ;\
+	bar once
