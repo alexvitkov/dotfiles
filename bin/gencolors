@@ -1,6 +1,7 @@
 #!/bin/sh
 
 rm -rf ~/.cache/wal
+
 wal $@ -sn --backend haishoku -i ~/.wallpaper.png --saturate 1.0
 cat ~/.cache/wal/my.Xresources "$DOTFILES/static.Xresources" > ~/.Xresources
 xrdb ~/.Xresources
