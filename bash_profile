@@ -1,6 +1,6 @@
-[[ -f ~/.bashrc ]] && . ~/.bashrc
 
 export DOTFILES="$HOME/.dotfiles"
+[[ -f ~/.bashrc ]] && . ~/.bashrc
 
 export GTK_THEME=Arc
 

@@ -2,10 +2,11 @@ MODE=${1:-sxiv}
 
 case $MODE in
     menu)
-        WP="$HOME/media/wallpapers/$(ls ~/media/wallpapers | shuf | dmenu)"
+        WP="$(find ~/media/wallpapers | shuf | dmenu)"
         ;;
     *)
-        WP=$(find ~/media/wallpapers | shuf | sxiv -to -)
+        DIR=$HOME/media/wallpapers/$1
+        WP="$(find $DIR | shuf | sxiv -to -)"
         ;;
 esac
 
@@ -13,5 +14,5 @@ if [ $? = 0 ] && [ ! -z "$WP" ]; then
     feh --bg-fill "$WP"
     magick "$WP" -resize 1920x1080^ -gravity center -extent 1920x1080 ~/.wallpaper.png
     feh --bg-scale ~/.wallpaper.png
-    gencolors -l
+    gencolors
 fi
