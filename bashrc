@@ -5,8 +5,13 @@ shopt -s autocd
 set -o vi
 bind '"jk":vi-movement-mode'
 bind '"kj":vi-movement-mode'
+bind "\C-p:previous-history"
+bind "\C-n:next-history"
 
 
+
+
+alias gdb='gdb -tui -q'
 alias vi='nvim'
 alias vim='nvim'
 alias la='ls -a'

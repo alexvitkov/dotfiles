@@ -2,10 +2,11 @@ MODE=${1:-sxiv}
 
 case $MODE in
     menu)
-        WP="$HOME/media/wallpapers/$(ls ~/media/wallpapers | shuf | dmenu)"
+        WP="$(find ~/media/wallpapers | shuf | dmenu)"
         ;;
     *)
-        WP=$(find ~/media/wallpapers | shuf | sxiv -to -)
+        DIR=$HOME/media/wallpapers/$1
+        WP="$(find $DIR | shuf | sxiv -to -)"
         ;;
 esac
 
