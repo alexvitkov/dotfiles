@@ -8,7 +8,7 @@ alt + shift + e
 	emoji
 
 alt + r
-	dmenu_run
+	rofi -show run
 
 alt + e
 	pcmanfm

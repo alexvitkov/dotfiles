@@ -98,6 +98,7 @@ nnoremap <silent> <space>s :<C-u>CocList -I symbols<CR>
 
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+au! BufWritePost ~/.config/sxhkd/sxhkdrc silent !pkill -USR1 sxhkd
 au! BufWritePost ~/.config/nvim/init.vim silent so %
 au! BufWritePost ~/.Xresources silent !xrdb %
 au! BufWritePost ~/.local/bar/* silent !bar once

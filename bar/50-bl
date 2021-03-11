@@ -1,0 +1,1 @@
+echo "BL:$(xbacklight -get | sed 's/\..*$//')"

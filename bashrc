@@ -1,6 +1,6 @@
 export NPM_PACKAGES="$HOME/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-export PATH="$DOTFILES/bin:$NPM_PACKAGES/bin:/opt/cross/bin:$HOME/bin:$HOME/.local/bin:$PATH:$HOME/.go/bin"
+export PATH="$PRIVATE/bin:$DOTFILES/bin:$NPM_PACKAGES/bin:/opt/cross/bin:$HOME/bin:$HOME/.local/bin:$PATH:$HOME/.go/bin"
 unset MANPATH
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 export GOPATH="$HOME/.go"

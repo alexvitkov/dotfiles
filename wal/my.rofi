@@ -1,7 +1,7 @@
-* {
-    background:                  #14191dcc;
+* {{
+    background:                  {background}cc;
     selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
-    foreground:                  #c4c5c6;
+    foreground:                  {foreground};
     normal-foreground:           @foreground;
     red:                         rgba ( 220, 50, 47, 100 % );
     blue:                        rgba ( 38, 139, 210, 100 % );
@@ -11,71 +11,71 @@
     selected-active-foreground:  rgba ( 129, 91, 164, 100 % );
     bordercolor:                 rgba ( 239, 97, 85, 21 % );
     lightfg:                     rgba ( 88, 104, 117, 100 % );
-    selected-normal-background:  #0052c1;
-    border-color:                #006fbf;
+    selected-normal-background:  {color2};
+    border-color:                {color3};
     spacing:                     2;
     separatorcolor:              white;
     background-color:            rgba ( 0, 0, 0, 0 % );
     padding: 0px;
-}
-window {
+}}
+window {{
     background-color: @background;
     border:           1;
     padding:          10;
-}
-mainbox {
+}}
+mainbox {{
     border:  0;
-}
-message {
+}}
+message {{
     border-color: @separatorcolor;
-}
-textbox {
+}}
+textbox {{
     text-color: @foreground;
-}
-listview {
+}}
+listview {{
     fixed-height: 0;
     border-color: @separatorcolor;
     spacing:      2px ;
     scrollbar:    false;
-}
-element {
+}}
+element {{
     border:  0;
     padding: 2px;
     text-color:       @normal-foreground;
-}
-element.selected {
+}}
+element.selected {{
     background-color: @selected-normal-background;
     text-color:       @selected-normal-foreground;
-}
-scrollbar {
+}}
+scrollbar {{
     width:        4px ;
     border:       0;
     handle-width: 8px ;
-}
-mode-switcher {
+}}
+mode-switcher {{
     border:       2px dash 0px 0px ;
     border-color: @separatorcolor;
-}
-button.selected {
+}}
+button.selected {{
     background-color: @selected-normal-background;
     text-color:       @selected-normal-foreground;
-}
-inputbar {
+}}
+inputbar {{
     spacing:    0;
     text-color: @normal-foreground;
     padding:    1px;
     children:   [ prompt,textbox-prompt-colon,entry ];
-}
-entry {
+}}
+entry {{
     spacing:    0;
     text-color: @normal-foreground;
-}
-prompt {
+}}
+prompt {{
     spacing:    0;
     text-color: @normal-foreground;
-}
-textbox-prompt-colon {
+}}
+textbox-prompt-colon {{
     expand:     false;
     str:        ":";
     text-color: @normal-foreground;
-}
+}}

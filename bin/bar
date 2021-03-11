@@ -2,7 +2,7 @@ CMD=${1:-'once'}
 
 function barstring {
 	I=4
-	for fin in ~/.local/bar/*; do
+	for fin in "$DOTFILES/bar/"*; do
 		echo -en "│ "
 		sh $fin
 		I=$(expr $I + 1)
