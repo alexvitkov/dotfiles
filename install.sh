@@ -13,5 +13,6 @@ ln -sf "$DOTFILES/sxhkdrc"      "$HOME/.config/sxhkd/sxhkdrc"
 ln -sf "$DOTFILES/picom.conf"   "$HOME/.config/picom.conf"
 ln -sf "$DOTFILES/xinitrc"      "$HOME/.xinitrc"           
 ln -sf "$DOTFILES/gdbinit"      "$HOME/.gdbinit"           
+ln -sf "$DOTFILES/tmux.conf"    "$HOME/.tmux.conf"         
 
-echo '. "$DOTFILES"/bashrc_base; . "$DOTFILES"/bashrc' > ~/.bashrc #; . "$DOTFILES"/bashrc' > ~/.bashrc
+echo '. "$DOTFILES"/bashrc_base; . "$DOTFILES"/bashrc' > ~/.bashrc
