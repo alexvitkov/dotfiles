@@ -27,6 +27,10 @@ alias search='grep -RI'
 alias copy='xclip -selection clipboard'
 alias ppaste='xclip -o -selection clipboard'
 
+alias tks='tmux kill-session -t'
+alias ta='tmux attach'
+alias tat='tmux attach -t'
+
 alias gm='git merge'
 alias gd='git diff'
 alias ga='git add'

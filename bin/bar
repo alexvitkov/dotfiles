@@ -1,8 +1,10 @@
 CMD=${1:-'once'}
 
+BARPATH="$DOTFILES/bar"
+
 function barstring {
 	I=4
-	for fin in "$DOTFILES/bar/"*; do
+	for fin in "$BARPATH/"*; do
 		echo -en "│ "
 		sh $fin
 		I=$(expr $I + 1)
@@ -14,7 +16,7 @@ function barstring {
 }
 
 if [ $CMD = status ]; then
-	cat ~/.local/bar/* | sh
+	cat "$BARPATH/"* | sh
 elif [ $CMD = once ]; then
 	xsetroot -name "$(barstring | tr -d '\n')"
 else
