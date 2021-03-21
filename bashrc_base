@@ -2,9 +2,9 @@
 [[ $- != *i* ]] && return
 
 shopt -s autocd
-set -o vi
-bind '"jk":vi-movement-mode'
-bind '"kj":vi-movement-mode'
+#set -o vi
+#bind '"jk":vi-movement-mode'
+#bind '"kj":vi-movement-mode'
 bind "\C-p:previous-history"
 bind "\C-n:next-history"
 

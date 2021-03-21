@@ -1,5 +1,5 @@
-export DOTFILES="$HOME/.dotfiles"
-export PRIVATE="$HOME/.private"
+export DOTFILES="$HOME/dotfiles"
+export PRIVATE="$HOME/private"
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
@@ -16,3 +16,5 @@ export XDG_VIDEOS_DIR="$HOME"
 
 # fuck firefox
 rm -rf ~/Desktop
+
+export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh

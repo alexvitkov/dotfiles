@@ -17,9 +17,16 @@ ln -sf "$DOTFILES/xinitrc"      "$HOME/.xinitrc"
 ln -sf "$DOTFILES/gdbinit"      "$HOME/.gdbinit"           
 ln -sf "$DOTFILES/tmux.conf"    "$HOME/.tmux.conf"         
 ln -sf "$DOTFILES/roficonfig"   "$HOME/.config/rofi/config"
-ln -sf ~/.cache/wal/my.rofi     "$HOME/.config/rofi/theme.rasi"
-ln -sf ~/.cache/wal/my.dunstrc  "$HOME/.config/dunst/dunstrc"
 
-ln -sf "$(which rofi)"          "$DOTFILES/bin/dmenu"
+if [ -d ~/.cache/wal ]; then
+    ln -sf ~/.cache/wal/my.rofi     "$HOME/.config/rofi/theme.rasi"
+    ln -sf ~/.cache/wal/my.dunstrc  "$HOME/.config/dunst/dunstrc"
+fi
+
+if which rofi &> /dev/null; then
+    ln -sf "$(which rofi)" "$DOTFILES/bin/dmenu"
+else
+    echo "you shoud install rofi"
+fi
 
 echo '. "$DOTFILES"/bashrc_base; . "$DOTFILES"/bashrc' > ~/.bashrc

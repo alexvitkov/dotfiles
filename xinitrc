@@ -9,14 +9,15 @@ dunst &
 feh --bg-scale .wallpaper.png & 
 bar loop &
 
-#while true; do 
-    #picom --experimental-backends
-    #sleep 1
-#done &
+while true; do 
+    picom --experimental-backends
+    sleep 1
+done &
 
 sxhkd &
 
 xrdb ~/.Xresources
+
 
 while [ ! -f ~/.wmlock ]; do
 	dwm || exit
