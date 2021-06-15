@@ -14,5 +14,5 @@ if [ $? = 0 ] && [ ! -z "$WP" ]; then
     feh --bg-fill "$WP"
     magick "$WP" -resize 1920x1080^ -gravity center -extent 1920x1080 ~/.wallpaper.png
     feh --bg-scale ~/.wallpaper.png
-    gencolors
+    # gencolors
 fi

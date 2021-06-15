@@ -1,8 +1,11 @@
 alt + Escape
 	pkill -USR1 -x sxhkd
 
-alt + shift + Return
+alt + Return
 	st
+
+alt + shift + Return
+	alacritty
 
 alt + shift + e
 	emoji
@@ -12,6 +15,9 @@ alt + r
 
 alt + e
 	pcmanfm
+
+alt + shift + r
+	cd ~/remix && ./build/remix
 
 alt + b
 	browser
@@ -53,9 +59,9 @@ XF86MonBrightnessDown
 	bar once
 
 XF86AudioRaiseVolume
-	pactl set-sink-volume 1 +5% ;\
+	pactl set-sink-volume 0 +5% ;\
 	bar once
 
 XF86AudioLowerVolume
-	pactl set-sink-volume 1 -5% ;\
+	pactl set-sink-volume 0 -5% ;\
 	bar once

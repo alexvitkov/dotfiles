@@ -28,9 +28,9 @@ hi! TODO cterm=italic,bold ctermfg=8 ctermbg=NONE
 hi! LineNr ctermfg=8
 hi! CursorLineNr ctermfg=8 cterm=bold
 
-hi! String ctermbg=NONE cterm=bold ctermfg=15
-hi! cFormat ctermbg=NONE cterm=bold ctermfg=15
-hi cSpecial ctermbg=NONE cterm=bold ctermfg=15
+hi! String ctermbg=NONE cterm=bold ctermfg=NONE
+hi! cFormat ctermbg=NONE cterm=bold ctermfg=NONE
+hi cSpecial ctermbg=NONE cterm=bold ctermfg=NONE
 
 hi! CorErrorSign ctermfg=red cterm=bold
 hi! CocErrorHighlight ctermfg=red cterm=underline
@@ -48,8 +48,8 @@ hi MatchParen cterm=underline ctermbg=8
 
 hi Visual ctermbg=8
 
-hi Pmenu ctermbg=15 ctermfg=0
-hi EndOfBuffer ctermfg=15
+hi Pmenu ctermbg=8 ctermfg=0
+hi EndOfBuffer ctermfg=NONE
 
 hi ErrorMsg cterm=bold,underline ctermfg=red ctermbg=NONE
 hi Error ctermfg=red cterm=underline

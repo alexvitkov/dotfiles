@@ -2,6 +2,11 @@
 
 rm -rf ~/.cache/wal
 
-wal $@ -sn --backend haishoku -i ~/.wallpaper.png --saturate 0.7
+if [ -z "$1" ]; then
+    wal -sn -i ~/.wallpaper.png --saturate 0.7
+else
+    wal -sn --theme $1
+fi
+
 cat ~/.cache/wal/my.Xresources "$DOTFILES/static.Xresources" > ~/.Xresources
 xrdb ~/.Xresources

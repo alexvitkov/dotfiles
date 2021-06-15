@@ -1,26 +1,2 @@
-st.padding: 0
-
-dwm.background: black
-dwm.foreground: white
-
-st.font: Iosevka:size=14
-rofi.font: Iosevka 13
-
-st.alpha:  .9
-dwm.alpha: .9
-
-
-*.background_sel: #777777
-*.foreground_sel: black
-
-*.bar1: #CCCCCC
-*.bar2: #CCCCCC
-*.bar3: #CCCCCC
-*.bar4: #CCCCCC
-*.bar5: #CCCCCC
-*.bar6: #CCCCCC
-*.bar7: #CCCCCC
-
-dwm.borderpx: 2
-dwm.border: black
-dwm.border_sel: red
+st.alpha: 1.0
+dwm.alpha: 1.0

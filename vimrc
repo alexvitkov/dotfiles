@@ -105,6 +105,7 @@ au! BufWritePost ~/.local/bar/* silent !bar once
 au! BufWritePost *.tex silent !pdflatex %
 au! BufWritePost ~/bin/bar silent !bar once
 au! BufNewFile,BufRead *.ejs set filetype=html
+au! BufWritePost ~/verycool/* silent !make -C ~/verycool
 
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
@@ -112,9 +113,6 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 nnoremap <F1> @q
 nnoremap <F2> @w
-
-inoremap тн <esc>
-inoremap нт <esc>
 
 nnoremap щ y
 nnoremap Щ Y

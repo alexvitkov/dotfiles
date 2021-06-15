@@ -1,12 +1,14 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static unsigned int borderpx  = 2;        /* border pixel of windows */
+static unsigned int borderpx        = 3;        /* border pixel of windows */
 static const unsigned int snap      = 0;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
+static const unsigned int gappx     = 6;        /* gaps between windows */
 static const char *fonts[]          = { "Liberation Sans:size=12" }; 
 
+static const int CORNER_RADIUS = 10;
 
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";

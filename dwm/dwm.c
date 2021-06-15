@@ -40,6 +40,8 @@
 #ifdef XINERAMA
 #include <X11/extensions/Xinerama.h>
 #endif /* XINERAMA */
+
+#include <X11/extensions/shape.h>
 #include <X11/Xft/Xft.h>
 
 #include "drw.h"
@@ -53,8 +55,8 @@
 #define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
 #define LENGTH(X)               (sizeof X / sizeof X[0])
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
-#define WIDTH(X)                ((X)->w + 2 * (X)->bw)
-#define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
+#define WIDTH(X)                ((X)->w + 2 * (X)->bw + gappx)
+#define HEIGHT(X)               ((X)->h + 2 * (X)->bw + gappx)
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 
@@ -256,6 +258,7 @@ static void zoom(const Arg *arg);
 static void togglefullscreen(const Arg *arg);
 static void load_xresources(void);
 static void resource_load(XrmDatabase db, char *name, enum resource_type rtype, void *dst);
+static void drawroundedcorners(Client *c);
 
 /* variables */
 static const char broken[] = "broken";
@@ -1034,6 +1037,54 @@ isuniquegeom(XineramaScreenInfo *unique, size_t n, XineramaScreenInfo *info)
 }
 #endif /* XINERAMA */
 
+
+void drawroundedcorners(Client *c) {
+    // NOTE: this is extremely hacky and surely could be optimized.
+    //       Any X wizards out there reading this, please pull request.
+    if (CORNER_RADIUS > 0 && c && !c->isfullscreen) {
+        Window win;
+        win = c->win;
+        if(!win) { return; }
+
+        XWindowAttributes win_attr;
+        if(!XGetWindowAttributes(dpy, win, &win_attr)) return;
+
+        // set in config.h:
+        int dia = 2 * CORNER_RADIUS;
+        int w = c->w;
+        int h = c->h;
+        if(w < dia || h < dia) return;
+
+        Pixmap mask;
+        mask = XCreatePixmap(dpy, win, w, h, 1);
+        if(!mask) { return; }
+
+        XGCValues xgcv;
+        GC shape_gc;
+        shape_gc = XCreateGC(dpy, mask, 0, &xgcv);
+
+        if(!shape_gc) {
+            XFreePixmap(dpy, mask);
+            free(shape_gc);
+            printf("no gc\n");
+            return;
+        }
+
+        XSetForeground(dpy, shape_gc, 0);
+        XFillRectangle(dpy, mask, shape_gc, 0, 0, w, h);
+        XSetForeground(dpy, shape_gc, 1);
+        XFillArc(dpy, mask, shape_gc, 0, 0, dia, dia, 0, 23040);
+        XFillArc(dpy, mask, shape_gc, w-dia-1, 0, dia, dia, 0, 23040);
+        XFillArc(dpy, mask, shape_gc, 0, h-dia-1, dia, dia, 0, 23040);
+        XFillArc(dpy, mask, shape_gc, w-dia-1, h-dia-1, dia, dia, 0, 23040);
+        XFillRectangle(dpy, mask, shape_gc, CORNER_RADIUS, 0, w-dia, h);
+        XFillRectangle(dpy, mask, shape_gc, 0, CORNER_RADIUS, w, h-dia);
+        XShapeCombineMask(dpy, win, ShapeBounding, 0, 0, mask, ShapeSet);
+        XFreePixmap(dpy, mask);
+        XFreeGC(dpy, shape_gc);
+    }
+}
+
 void
 keypress(XEvent *e)
 {
@@ -1124,6 +1175,7 @@ manage(Window w, XWindowAttributes *wa)
 		unfocus(selmon->sel, 0);
 	c->mon->sel = c;
 	arrange(c->mon);
+    //drawroundedcorners(c);
 	XMapWindow(dpy, c->win);
 	focus(NULL);
 }
@@ -1328,23 +1380,52 @@ void
 resizeclient(Client *c, int x, int y, int w, int h)
 {
 	XWindowChanges wc;
+    unsigned int n;
+    unsigned int gapoffset = 0;
+    unsigned int gapincr = 0;
+    Client *nbc;
 
-	c->oldx = c->x; c->x = wc.x = x;
-	c->oldy = c->y; c->y = wc.y = y;
-	c->oldw = c->w; c->w = wc.width = w;
-	c->oldh = c->h; c->h = wc.height = h;
 	wc.border_width = c->bw;
-	if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next))
-	    || &monocle == c->mon->lt[c->mon->sellt]->arrange)
-	    && !c->isfullscreen && !c->isfloating) {
-		c->w = wc.width += c->bw * 2;
-		c->h = wc.height += c->bw * 2;
-		wc.border_width = 0;
-	}
+   // if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next))
+   //         || &monocle == c->mon->lt[c->mon->sellt]->arrange)
+   //         && !c->isfullscreen && !c->isfloating) 
+   // {
+   //     c->w = wc.width += c->bw * 2;
+   //     c->h = wc.height += c->bw * 2;
+   //     wc.border_width = 0;
+   // }
+   // else 
+   {
+        /* Get number of clients for the client's monitor */
+    	for (n = 0, nbc = nexttiled(c->mon->clients); nbc; nbc = nexttiled(nbc->next), n++);
+    
+    	/* Do nothing if layout is floating */
+    	if (c->isfloating || c->mon->lt[c->mon->sellt]->arrange == NULL) {
+    		gapincr = gapoffset = 0;
+    	} else {
+    		/* Remove border and gap if layout is monocle or only one client */
+    		if (c->mon->lt[c->mon->sellt]->arrange == monocle || n == 1) {
+    			gapoffset = 0;
+    			gapincr = -2 * borderpx;
+    			wc.border_width = 0;
+    		} else {
+    			gapoffset = gappx;
+    			gapincr = 2 * gappx;
+    		}
+    	}
+    
+    }
+ 	c->oldx = c->x; c->x = wc.x = x + gapoffset;
+ 	c->oldy = c->y; c->y = wc.y = y + gapoffset;
+ 	c->oldw = c->w; c->w = wc.width = w - gapincr;
+ 	c->oldh = c->h; c->h = wc.height = h - gapincr;
+
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
 	configure(c);
 	XSync(dpy, False);
 }
+
+
 
 void
 resizemouse(const Arg *arg)
@@ -1390,6 +1471,7 @@ resizemouse(const Arg *arg)
 			}
 			if (!selmon->lt[selmon->sellt]->arrange || c->isfloating)
 				resize(c, c->x, c->y, nw, nh, 1);
+            //drawroundedcorners(c);
 			break;
 		}
 	} while (ev.type != ButtonRelease);
@@ -1401,6 +1483,7 @@ resizemouse(const Arg *arg)
 		selmon = m;
 		focus(NULL);
 	}
+    //drawroundedcorners(c);
 }
 
 void

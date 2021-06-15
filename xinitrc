@@ -18,7 +18,6 @@ sxhkd &
 
 xrdb ~/.Xresources
 
-
 while [ ! -f ~/.wmlock ]; do
 	dwm || exit
 done
