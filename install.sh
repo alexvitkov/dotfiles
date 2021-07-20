@@ -5,6 +5,7 @@ mkdir -p ~/.config/wal/templates
 mkdir -p ~/.config/wal/colorschemes/{dark,light}
 mkdir -p ~/.config/rofi
 mkdir -p ~/.config/dunst
+mkdir -p ~/.config/conky
 cp "$DOTFILES"/wal/* ~/.config/wal/templates
 
 
@@ -18,6 +19,7 @@ ln -sf "$DOTFILES/xinitrc"      "$HOME/.xinitrc"
 ln -sf "$DOTFILES/gdbinit"      "$HOME/.gdbinit"           
 ln -sf "$DOTFILES/tmux.conf"    "$HOME/.tmux.conf"         
 ln -sf "$DOTFILES/roficonfig"   "$HOME/.config/rofi/config"
+ln -sf "$DOTFILES/conky.conf"   "$HOME/.config/conky/conky.conf"
 ln -sf "$DOTFILES/bashrc"       "$HOME/.bashrc"
 
 cp "$DOTFILES/themes"/* ~/.config/wal/colorschemes/dark
