@@ -22,34 +22,34 @@ hi clear MatchParen
 hi clear Error
 hi clear Title
 
-hi! Comment cterm=italic ctermfg=8 ctermbg=NONE
-hi! TODO cterm=italic,bold ctermfg=8 ctermbg=NONE
+hi! Comment cterm=italic ctermfg=7 ctermbg=NONE
+hi! TODO cterm=italic,bold ctermfg=7 ctermbg=NONE
 
-hi! LineNr ctermfg=8
-hi! CursorLineNr ctermfg=8 cterm=bold
+hi! LineNr ctermfg=7
+hi! CursorLineNr ctermfg=7 cterm=bold
 
 hi! String ctermbg=NONE cterm=bold ctermfg=NONE
 hi! cFormat ctermbg=NONE cterm=bold ctermfg=NONE
 hi cSpecial ctermbg=NONE cterm=bold ctermfg=NONE
 
-hi! CorErrorSign ctermfg=red cterm=bold
-hi! CocErrorHighlight ctermfg=red cterm=underline
-hi! CocFloat ctermfg=NONE ctermbg=red
-hi! CocErrorFloat ctermfg=NONE ctermbg=red
-hi! CocWarningFloat ctermfg=NONE ctermbg=red
-hi! ColorColumn ctermbg=8
+hi! CorErrorSign ctermfg=9 cterm=bold
+hi! CocErrorHighlight ctermfg=9 cterm=underline
+hi! CocFloat ctermfg=NONE ctermbg=9
+hi! CocErrorFloat ctermfg=NONE ctermbg=9
+hi! CocWarningFloat ctermfg=NONE ctermbg=9
+hi! ColorColumn ctermbg=7
 
 
 hi! CocWarningSign ctermfg=yellow cterm=bold
 hi! CocWarningHighlight ctermfg=yellow cterm=underline
 
 hi cIncluded ctermfg=NONE ctermbg=NONE
-hi MatchParen cterm=underline ctermbg=8
+hi MatchParen cterm=underline ctermbg=7
 
-hi Visual ctermbg=8
+hi Visual ctermbg=7
 
-hi Pmenu ctermbg=8 ctermfg=0
+hi Pmenu ctermbg=7 ctermfg=0
 hi EndOfBuffer ctermfg=NONE
 
-hi ErrorMsg cterm=bold,underline ctermfg=red ctermbg=NONE
-hi Error ctermfg=red cterm=underline
+hi ErrorMsg cterm=bold,underline ctermfg=9 ctermbg=NONE
+hi Error ctermfg=9 cterm=underline

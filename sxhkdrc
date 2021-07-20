@@ -36,7 +36,7 @@ alt + s
 	screenshot -us
 
 alt + shift + s
-	screenshot
+	galinss
 
 alt + t
 	notify-send "Status" "$(bar status)"

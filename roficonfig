@@ -1,1 +1,3 @@
 rofi.theme: ~/.config/rofi/theme
+
+rofi.font: Iosevka 14

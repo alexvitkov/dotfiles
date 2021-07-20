@@ -6,7 +6,9 @@ xset r rate 300 40
 gpg-connect-agent UPDATESTARTUPTTY /bye &
 # xautolock -time 10 -locker /home/alex/bin/lock &
 dunst &
+conky &
 feh --bg-scale .wallpaper.png & 
+# wp ~/media/wallpapers/sketchy/white 3 &
 bar loop &
 
 while true; do 

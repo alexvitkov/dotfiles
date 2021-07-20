@@ -48,10 +48,9 @@ alias gpl='git pull'
 alias scu='systemctl --user'
 export NPM_PACKAGES="$HOME/.npm-packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-export PATH="$PRIVATE/bin:$DOTFILES/bin:$NPM_PACKAGES/bin:/opt/cross/bin:$HOME/bin:$HOME/.local/bin:$PATH:$HOME/.go/bin"
+export PATH="$PRIVATE/bin:$DOTFILES/bin:$NPM_PACKAGES/bin:/opt/cross/bin:$HOME/bin:$HOME/.local/bin:$PATH:$HOME/go/bin"
 unset MANPATH
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-export GOPATH="$HOME/.go"
 
 lfcd () {
     tmp="$(mktemp)"
@@ -74,3 +73,9 @@ export GPG_TTY=$(tty)
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # export PS1="\[\033[38;5;1m\]\u\[$(tput sgr0)\]\[\033[38;5;2m\]@\[$(tput sgr0)\]\[\033[38;5;3m\]\h\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;5m\]\\$\[$(tput sgr0)\] "
+
+PATH="/home/alex/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/alex/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/alex/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/alex/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/alex/perl5"; export PERL_MM_OPT;

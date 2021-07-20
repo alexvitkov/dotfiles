@@ -29,6 +29,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim'
 Plug 'antoinemadec/coc-fzf'
+Plug 'neovim/nvim-lspconfig'
+Plug 'ianks/vim-tsx'
 call plug#end()
 
 inoremap jk <esc>
@@ -66,7 +68,7 @@ vmap <silent> F <Plug>(coc-format-selected)
 nnoremap j gj
 nnoremap k gk
 
-nnoremap <space>w :echo 'stop'<cr>
+nnoremap <space>w :wa<cr>
 nnoremap <space><space> <C-^>
 nnoremap <space>ve :e ~/.config/nvim/init.vim<cr>
 nnoremap <space>te :e ~/.config/nvim/colors/good.vim<cr>
@@ -110,6 +112,8 @@ au! BufWritePost ~/verycool/* silent !make -C ~/verycool
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+:nnoremap <F8> :setl noai nocin nosi inde=<CR>
 
 nnoremap <F1> @q
 nnoremap <F2> @w

@@ -1,6 +1,6 @@
 [global]
     frame_width = 2
-    frame_color = "{color1}"
+    frame_color = "{cursor}"
 
     geometry = "350x4-30+20"
     

@@ -8,9 +8,9 @@ dwm.normbgcolor:     {background}
 dwm.normfgcolor:     {foreground}
 dwm.normbordercolor: {background}
 
-dwm.selbgcolor:      {color2}
-dwm.selfgcolor:      {foreground}
-dwm.selbordercolor:  {color3}
+dwm.selbgcolor:      {cursor}
+dwm.selfgcolor:      {background}
+dwm.selbordercolor:  {cursor}
 
 ! Colors 0-15.
 *.color0:  {color0}
